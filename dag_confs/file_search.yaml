@@ -1,0 +1,18 @@
+dag:
+  id: file_search_dou
+  description: Search for file names in DOU ignoring formatting
+  schedule: "0 8 * * MON-FRI"  # Runs at 8 AM on weekdays
+  search:
+    sources:
+      - DOU
+    terms_file: "data/search_terms.txt"  # Path to your file with terms
+    file_type: "txt"                     # Options: txt, csv, xlsx
+    is_exact_search: False
+    force_rematch: True
+    dou_sections:
+      - SECAO_1
+  report:
+    emails:
+      - marciomaron@gmail.com
+    subject: "Pauta do CARF"
+    attach_csv: True      # Get results in CSV format 
